@@ -12,13 +12,14 @@ public class Hotel {
     private static HashMap<String, Integer> roomIndexMap = new HashMap<String, Integer>();
     private static List<Integer> startIndexes=new ArrayList<Integer>();
     private static List<Integer> endIndexes=new ArrayList<Integer>();
+    private static List<String> menuMessages=new ArrayList<String>();
 
-    
+    Hotel() {  
+
+    menuMessages.add("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room \n4.Deluxe Single Room\n")
+    menuMessages.add("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room\n4.Deluxe Single Room\n");
 
 
-    
-
-    private Hotel() {  
     startIndexes.add(0);
     startIndexes.add(10);
     startIndexes.add(30);
@@ -57,6 +58,18 @@ public class Hotel {
         return instance;
     }
 
+    private static void showMenu() {
+        System.out.println("\nEnter your choice :\n1.Display room details\n"+
+        "2.Display room availability \n"+
+        "3.Book\n4.Order food\n"+
+        "5.Checkout\n"+
+        "6.Exit\n");
+    }
+
+    private static void showMenuMessage() {
+        System.out.println("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room \n4.Deluxe Single Room\n");
+    }
+
 
     static holder hotel_ob=new holder();
     static Scanner scanner = new Scanner(System.in);
@@ -76,33 +89,34 @@ public class Hotel {
         char wish;
         x:
         do{
-
-            System.out.println("\nEnter your choice :\n1.Display room details\n2.Display room availability \n3.Book\n4.Order food\n5.Checkout\n6.Exit\n");
+            showMenu();
             choice = scanner.nextInt();
+
+            if(choice>=1 && choice<=3) {
+                    showMenuMessage();
+                }
+
+                else if(choice>=4 && choice<=5) {
+                    System.out.print("Room Number -");
+                }
+                choice2 = scanner.nextInt();
+                
             switch(choice){
-                case 1: System.out.println("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room \n4.Deluxe Single Room\n");
-                        choice2 = scanner.nextInt();
+                case 1:
                         Hotel.features(choice2);
                     break;
-                case 2:System.out.println("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room\n4.Deluxe Single Room\n");
-                         choice2 = scanner.nextInt();
+                case 2:
                          Hotel.availability(choice2);
                     break;
-                case 3:System.out.println("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room\n4.Deluxe Single Room\n");
-                         choice2 = scanner.nextInt();
+                case 3:
                          Hotel.bookroom(choice2);                     
                     break;
                 case 4:
-                     System.out.print("Room Number -");
-                         choice2 = scanner.nextInt();
                          if(choice2>60 || choice2<=0)
                              System.out.println("Room doesn't exist");
                          else
                              order(choice2);
-                case 5:                 
-                    System.out.print("Room Number -");
-                         choice2 = scanner.nextInt();
-                         if(choice2>60 || choice2<=0)
+                case 5: if(choice2>60 || choice2<=0)
                              System.out.println("Room doesn't exist");
                          else
                              deallocate(choice2);
