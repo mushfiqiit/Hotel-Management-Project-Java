@@ -70,8 +70,6 @@ public class Hotel {
         System.out.println("\nChoose room type :\n1.Luxury Double Room \n2.Deluxe Double Room \n3.Luxury Single Room \n4.Deluxe Single Room\n");
     }
 
-
-    static holder hotel_ob=new holder();
     static Scanner scanner = new Scanner(System.in);
 
     static void CustomerDetails(int roomNumber)
@@ -100,7 +98,7 @@ public class Hotel {
                     System.out.print("Room Number -");
                 }
                 choice2 = scanner.nextInt();
-                
+
             switch(choice){
                 case 1:
                         Hotel.features(choice2);
@@ -193,15 +191,20 @@ public class Hotel {
 
     }
 
+    static void printBill() {
+        System.out.println("\nRoom Charge - "+4000);
+        System.out.println("\n===============");
+        System.out.println("Food Charges:- ");
+        System.out.println("===============");
+        System.out.println("Item   Quantity    Price");
+        System.out.println("-------------------------");
+    }
 
-    static void bill(int roomNumber,int rtype)
+    static void bill(int roomNumber)
     {
         double amount=0;
         String list[]={"Sandwich","Pasta","Noodles","Coke"};
-        System.out.println("\n*******");
-        System.out.println(" Bill:-");
-        System.out.println("*******");
-        
+
         amount+=rooms.get(roomNumber).getChargePerDay();
 
         for(Food footItem:rooms.get(roomNumber).getFood()) {
@@ -252,7 +255,7 @@ public class Hotel {
             roomNumber=scanner.nextInt();
             roomNumber--;
             if(rooms.get(roomNumber).getCustomer()!=null)
-                throw new NotAvailable();
+                System.out.println("Not Available");
             CustomerDetails(roomNumber);
             }
             catch(Exception e)

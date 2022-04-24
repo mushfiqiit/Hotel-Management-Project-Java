@@ -1,5 +1,5 @@
 public class Pasta extends Food {
-    public Pasta() {  }
+    public Pasta() { super(); }
 
     public void setPrice() {
         super.price=quantity*60;

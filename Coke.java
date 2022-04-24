@@ -1,7 +1,7 @@
 public class Coke extends Food {
-    public Coke() {  }
+    public Coke() { super(); }
 
     public void setPrice() {
-        super.price=quantity*50;
+        super.price=quantity*30;
     }
 }

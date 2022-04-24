@@ -10,6 +10,11 @@ public abstract class Food implements Serializable {
         this.quantity=quantity;
     }
 
+    public Food()
+    {
+        
+    }
+
     public float getPrice() {
         return this.price;
     }
