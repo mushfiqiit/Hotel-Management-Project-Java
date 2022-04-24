@@ -1,9 +1,13 @@
+import java.util.*;
+
+
 public abstract class Room {
     protected int bedSize;
     protected boolean ACAvailable;
     protected Customer customer;
     protected boolean freeBreakfastAvailable;
-    protected int chargePerDay;
+    protected double chargePerDay;
+    private ArrayList<Food> food =new ArrayList<Food>();
 
     private String isAvailable(boolean availability) {
         if(availability) return "Yes";
@@ -12,6 +16,10 @@ public abstract class Room {
 
 
     public Room() {  }
+
+    public void addFood(Food givenFood) {
+        this.food.add(givenFood);
+    }
 
     public void printFeatures() {
         System.out.println("Bed Size :" + bedSize +
@@ -26,5 +34,13 @@ public abstract class Room {
 
     public Customer getCustomer() {
         return this.customer;
+    }
+
+    public double getChargePerDay() {
+        return this.chargePerDay;
+    }
+
+    public ArrayList<Food> getFood() {
+        return this.food;
     }
 }
