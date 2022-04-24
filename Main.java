@@ -9,6 +9,16 @@ import java.util.Scanner;
 
 
 
+class NotAvailable extends Exception
+{
+    @Override
+    public String toString()
+    {
+        return "Not Available !";
+    }
+}
+
+
 
 class write implements Runnable
 {
